@@ -1,12 +1,10 @@
-#  Kubernetes Monitoring Stack with Node.js API
+# 🚀 Kubernetes Monitoring Stack for Node.js API
 
 ## 📌 Project Overview
 
-This project demonstrates a complete Kubernetes-based application deployment with a full monitoring and observability stack.
+Production-like Kubernetes environment for deploying and monitoring a Node.js REST API with PostgreSQL, including full observability using Prometheus and Grafana.
 
-It includes a containerized Node.js REST API, a PostgreSQL database with persistent storage, and a monitoring system powered by Prometheus and Grafana.
-
-The goal is to simulate a production-like DevOps environment locally using Minikube.
+This project simulates how real-world systems are deployed, monitored, and analyzed in modern DevOps workflows.
 
 ---
 
@@ -51,20 +49,21 @@ User → Ingress → Service → API → PostgreSQL
 
 ## ⚡ Features
 
-* Containerized application
-* Kubernetes-based deployment
-* Persistent storage (PV/PVC)
-* ConfigMap & Secret usage
-* Ingress routing
-* Real-time monitoring dashboards
+* Containerized Node.js API
+* Kubernetes-based deployment & networking
+* Persistent storage using PV/PVC
+* Secure configuration with ConfigMap & Secret
+* Ingress-based routing
+* Full monitoring and observability
+* Custom Grafana dashboards
 
 ---
 
 ## 📊 Monitoring & Observability
 
-The system provides:
+The system provides real-time insights into:
 
-* Total / Running Pods
+* Pod status (Running / Pending / Failed)
 * Node count
 * CPU, Memory, Disk usage
 * Network traffic
@@ -74,16 +73,26 @@ The system provides:
 
 ## 📸 Screenshots
 
-### 📊 Grafana Dashboard
+### 📊 Real-time Cluster Monitoring (CPU, Memory, Pods)
 
 ![Grafana](assets/screenshots/grafana-dashboard.png)
 
 ---
 
-### 📈 Node Metrics
+### 📈 Node-Level Metrics (CPU Load, RAM Usage)
 
 ![Node Metrics](assets/screenshots/node-metrics.png)
 
+
+---
+
+## 🧠 Design Decisions
+
+* **ConfigMap**: Used to externalize configuration instead of hardcoding values inside the container.
+* **Secret**: Ensures sensitive data (e.g., database credentials) is not exposed in plain text.
+* **Persistent Volume**: Guarantees PostgreSQL data persistence beyond pod lifecycle.
+* **Prometheus + Grafana**: Industry-standard stack for metrics collection and visualization.
+* **node-exporter & kube-state-metrics**: Provide deep visibility into node and Kubernetes object states.
 
 ---
 
@@ -111,13 +120,22 @@ kubectl apply -f monitoring/
 kubectl port-forward svc/grafana 3000:3000
 ```
 
+---
 
+## 🔮 Future Improvements
+
+* Horizontal Pod Autoscaler (HPA)
+* CI/CD Pipeline (GitHub Actions)
+* Helm charts for easier deployment
+* Centralized logging (Loki / ELK)
+* Deployment on managed Kubernetes (EKS / GKE)
 
 ---
 
 ## 💡 Key Takeaways
 
-* Hands-on Kubernetes deployment
-* Built monitoring system using Prometheus & Grafana
-* Simulated production-like DevOps environment
+* Built a production-like Kubernetes environment
+* Implemented full observability stack
+* Gained hands-on experience with real DevOps workflows
+
 
