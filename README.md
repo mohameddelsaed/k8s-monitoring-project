@@ -1,74 +1,123 @@
-# 🚀 Kubernetes Monitoring Project
+#  Kubernetes Monitoring Stack with Node.js API
 
-This project demonstrates deploying a full-stack application on Kubernetes with a complete monitoring setup using Prometheus and Grafana.
+## 📌 Project Overview
+
+This project demonstrates a complete Kubernetes-based application deployment with a full monitoring and observability stack.
+
+It includes a containerized Node.js REST API, a PostgreSQL database with persistent storage, and a monitoring system powered by Prometheus and Grafana.
+
+The goal is to simulate a production-like DevOps environment locally using Minikube.
 
 ---
 
-## 📦 Tech Stack
+## 🏗️ Architecture
 
-* Kubernetes
-* Docker
+* Node.js API (Deployment)
+* PostgreSQL (Persistent Volume)
+* Kubernetes Resources:
+
+  * Deployment
+  * Service
+  * Ingress
+  * ConfigMap
+  * Secret
+* Monitoring Stack:
+
+  * Prometheus
+  * Grafana
+  * node-exporter
+  * kube-state-metrics
+
+### 🔄 Request Flow
+
+```
+User → Ingress → Service → API → PostgreSQL
+                         ↓
+                   Prometheus → Grafana
+```
+
+---
+
+## 🛠️ Tech Stack
+
 * Node.js
+* Docker
+* Kubernetes (Minikube)
 * PostgreSQL
 * Prometheus
 * Grafana
-* node-exporter
-* kube-state-metrics
 
 ---
 
-## ⚙️ Features
+## ⚡ Features
 
-* Deploy Node.js API using Kubernetes Deployment
-* Expose services using Service and Ingress
-* Use Persistent Volume for PostgreSQL
-* Full monitoring setup:
-
-  * CPU / Memory usage
-  * Pods & Deployments status
-  * Node metrics
-* Custom Grafana dashboards
+* Containerized application
+* Kubernetes-based deployment
+* Persistent storage (PV/PVC)
+* ConfigMap & Secret usage
+* Ingress routing
+* Real-time monitoring dashboards
 
 ---
 
-## 📊 Monitoring
+## 📊 Monitoring & Observability
 
-This project includes a complete monitoring stack:
+The system provides:
 
-* Prometheus for metrics collection
-* Grafana for visualization
-* node-exporter for node metrics
-* kube-state-metrics for Kubernetes objects
+* Total / Running Pods
+* Node count
+* CPU, Memory, Disk usage
+* Network traffic
+* Top pods by resource usage
+
+---
+
+## 📸 Screenshots
+
+### 📊 Grafana Dashboard
+
+![Grafana](assets/screenshots/grafana-dashboard.png)
+
+---
+
+### 📈 Node Metrics
+
+![Node Metrics](assets/screenshots/node-metrics.png)
+
 
 ---
 
 ## 📁 Project Structure
 
 ```
-k8s/
-├── app-deployment.yaml
-├── app-service.yaml
-├── ingress.yaml
-├── config.yaml
-├── secret.yaml
-├── postgres/
-└── monitoring/
+project-devops/
+├── k8s/
+├── monitoring/
+├── assets/screenshots/
+├── Dockerfile
+└── README.md
 ```
 
 ---
 
-## 🚀 Run Locally
+## 🚀 How to Run
 
 ```bash
 minikube start
+minikube addons enable ingress
+docker build -t project-api:latest .
 kubectl apply -f k8s/
+kubectl apply -f monitoring/
+kubectl port-forward svc/grafana 3000:3000
 ```
 
----
 
 
 ---
 
-## 👨‍💻 Author
+## 💡 Key Takeaways
 
-Mohamed
+* Hands-on Kubernetes deployment
+* Built monitoring system using Prometheus & Grafana
+* Simulated production-like DevOps environment
+
